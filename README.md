@@ -13,5 +13,5 @@ PhpStorm Settings for Craft CMS
 
 ## Other Resources
 
-- [Craft Coding Guidelines](https://github.com/craftcms/docs/blob/master/en/coding-guidelines.md) – Guidelines for Craft CMS and Craft plugin development
+- [Craft Coding Guidelines](https://github.com/craftcms/docs/blob/v3/en/coding-guidelines.md) – Guidelines for Craft CMS and Craft plugin development
 - [pluginfactory.io](https://pluginfactory.io/) – Craft plugin scaffold generator, compatible with Craft 3
