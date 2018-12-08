@@ -3,8 +3,16 @@ PhpStorm Settings for Craft CMS
 
 ## Settings Files
 
-- [`Craft_Code_Style.xml`](Craft_Code_Style.xml) – Code style scheme. Install from Preferences → Editor → Code Style → Manage… → Import…
+- [`Craft_Code_Style.xml`](Craft_Code_Style.xml) – Code style scheme.
 - [`Craft_Inspections.xml`](Craft_Inspections.xml) – Inspection profile. Install from Preferences → Editor → Inspections → Manage → Import…
+
+## Installation
+
+ 1. Go to PhpStorm Preferences → Tools → Settings Repository
+ 2. Add Read-only Source `https://github.com/craftcms/phpstorm-settings`
+ 3. Restart PhpStorm
+
+----
 
 ## Recommended PhpStorm Plugins
 
@@ -15,3 +23,6 @@ PhpStorm Settings for Craft CMS
 
 - [Craft Coding Guidelines](https://docs.craftcms.com/v3/coding-guidelines.html) – Guidelines for Craft CMS and Craft plugin development
 - [pluginfactory.io](https://pluginfactory.io/) – Craft plugin scaffold generator, compatible with Craft 3
+- [PhpStorm Live Templates Craft CMS](https://github.com/barrelstrength/PhpStorm-Live-Templates-Craft-CMS)
+- [PhpStorm Live Templates Twig Extended](https://github.com/barrelstrength/PhpStorm-Live-Templates-Twig-Extended)
+
