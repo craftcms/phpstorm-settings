@@ -1,18 +1,16 @@
 PhpStorm Settings for Craft CMS
 ===============================
 
-## Settings Files
-
-- [`Craft_Code_Style.xml`](Craft_Code_Style.xml) – Code style scheme.
-- [`Craft_Inspections.xml`](Craft_Inspections.xml) – Inspection profile. Install from Preferences → Editor → Inspections → Manage → Import…
-
 ## Installation
 
  1. Go to PhpStorm Preferences → Tools → Settings Repository
  2. Add Read-only Source `https://github.com/craftcms/phpstorm-settings`
  3. Restart PhpStorm
 
-----
+## Configuration
+
+- Select the **Craft 3 Code Style** Scheme via `Preferences → Editor → Inspections → Scheme
+- Select the **Craft Inspections** Profile via `Preferences → Editor → Inspections → Profile
 
 ## Recommended PhpStorm Plugins
 
