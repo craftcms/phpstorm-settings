@@ -1,0 +1,115 @@
+<templateSet group="Craft">
+  <template name="cdt" value="$transaction = Craft::$app-&gt;getDb()-&gt;beginTransaction();&#10;try {&#10;&#10;    $transaction-&gt;commit();&#10;} catch(\Throwable $exception) {&#10;    $transaction-&gt;rollBack();&#10;    &#10;    throw $exception;&#10;}" description="Craft / Database / Transaction" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="csdd" value="/**&#10; * Delete a $PARAM_DOC$.&#10; *&#10; * @param $MODEL_DOC$ $$$PARAM_DOC$&#10; * @return bool&#10; */&#10;public function delete$MODEL$($MODEL_CLASS$ $$$PARAM$): bool&#10;{&#10;    if ($this-&gt;hasEventHandlers(self::EVENT_BEFORE_DELETE_$EVENT$)) {&#10;        $this-&gt;trigger(self::EVENT_BEFORE_DELETE_$EVENT$, new $MODEL$Event([&#10;            '$PARAM$' =&gt; $$$PARAM$,&#10;        ]));&#10;    }&#10;&#10;    $$$PARAM$-&gt;beforeDelete();&#10;        &#10;    $db = Craft::$app-&gt;getDb();&#10;    &#10;    $transaction = $db-&gt;beginTransaction();&#10;    try {&#10;        $db-&gt;createCommand()-&gt;delete('{{%$TABLE$}}', [&#10;            'id' =&gt; $$$PARAM$-&gt;id&#10;        ])-&gt;execute();&#10;        $END$&#10;        &#10;        $transaction-&gt;commit();&#10;        &#10;        $$$PARAM$-&gt;afterDelete();&#10;    } catch (\Throwable $exception) {&#10;        $transaction-&gt;rollBack();&#10;        &#10;        throw $exception;&#10;    }&#10;    &#10;    if ($this-&gt;hasEventHandlers(self::EVENT_AFTER_DELETE_$EVENT$)) {&#10;        $this-&gt;trigger(self::EVENT_AFTER_DELETE_$EVENT$, new $MODEL$Event([&#10;            '$PARAM$' =&gt; $$$PARAM$,&#10;        ]));&#10;    }&#10;     &#10;    return true;&#10; }" description="Craft / Service / Domain / Delete" toReformat="true" toShortenFQNames="true">
+    <variable name="MODEL_CLASS" expression="classNameComplete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM" expression="phpVar" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="MODEL_CLASS" defaultValue="" alwaysStopAt="true" />
+    <variable name="EVENT" expression="capitalizeAndUnderscore(MODEL)" defaultValue="" alwaysStopAt="true" />
+    <variable name="TABLE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL_DOC" expression="MODEL_CLASS" defaultValue="" alwaysStopAt="false" />
+    <variable name="PARAM_DOC" expression="PARAM" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="PHP Class Member" value="true" />
+    </context>
+  </template>
+  <template name="cofo" value="$CLASS$::findOne(['id' =&gt; $$$MODEL$-&gt;id]);&#10;if (!$$$VAR$) {&#10;    throw new $Exception$Exception(&quot;&quot;)&#10;}" description="Craft / ORM / Find / One" toReformat="true" toShortenFQNames="true">
+    <variable name="CLASS" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="Exception" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="csdga" value="public function getAll$FETCHPROP2$(): array&#10;{&#10;    if ($this-&gt;_fetchedAll$FETCHPROP$) {&#10;        return array_values($this-&gt;_$PROPBY$ById);&#10;    }&#10;    &#10;    $this-&gt;_$PROPBY$ = [];&#10;    $this-&gt;_$PROPBY2$ByName = [];&#10;    &#10;    $results = $this-&gt;_create$METHOD$-&gt;all();&#10;    foreach ($results as $result) {&#10;        $$$VAR$ = $this-&gt;create$METHOD2$($result);&#10;        $this-&gt;_$PROPBY$[$$$VAR$-&gt;id] = $$$VAR$;&#10;        $this-&gt;_$PROPBY2$[$$$VAR$-&gt;name] = $$$VAR$;&#10;    }&#10;    &#10;    $this-&gt;_fetchedAll$FETCHPROP$ = true;&#10;    &#10;    return array_values($this-&gt;_$PROPBY$);&#10;}" description="Craft / Service / Domain / GetAll" toReformat="false" toShortenFQNames="true">
+    <variable name="FETCHPROP" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="FETCHPROP2" expression="FETCHPROP" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROPBY" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROPBY2" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="METHOD" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="VAR" expression="phpVar" defaultValue="" alwaysStopAt="true" />
+    <variable name="METHOD2" expression="complete()" defaultValue="VAR" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="csdgi" value="public function get$MODEL$ById(int $$$MODEL_VAR$Id)&#10;{&#10;    if ($this-&gt;_$PROP$ById &amp;&amp; array_key_exists($$$PARAM$, $this-&gt;_$PROP$)) {&#10;        return $this-&gt;_$PROP$[$$$PARAM$];&#10;    }&#10;    &#10;    if ($this-&gt;_fetchedAll$PROP2$) {&#10;        return null;&#10;    }&#10;    &#10;    $result = $this-&gt;_create$METHOD$&#10;        -&gt;where(['id' =&gt; $$$PARAM$])&#10;        -&gt;one();&#10;    &#10;    return $this-&gt;_$PROP$[$$$PARAM$] = $result ? $this-&gt;create$METHOD2$($result): null;&#10;}" description="Craft / Service / Domain / GetById" toReformat="false" toShortenFQNames="true">
+    <variable name="PROP" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="capitalize(PROP)" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL_VAR" expression="PARAM" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROP2" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="METHOD" expression="complete()" defaultValue="&quot;Query&quot;" alwaysStopAt="true" />
+    <variable name="METHOD2" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="csds" value="public function save$MODEL$($MODEL$ $$$PARAM$, bool $runValidation = true): bool&#10;{&#10;    $$isNew$MODEL$ = $$$PARAM$-&gt;getIsNew();&#10;    &#10;    if ($runValidation &amp;&amp; !$$$PARAM$-&gt;validate()) {&#10;        Craft::info(&quot;$MODEL$ not saved due to validation error.&quot;, __METHOD__);&#10;        return false;&#10;    }&#10;    &#10;    $transaction = Craft::$app-&gt;getDb()-&gt;beginTransaction();&#10;    try {&#10;        if (!$$isNew$MODEL$) {&#10;            $$$PARAM$Record = $RECORDCLASS$::findOne(['id' =&gt; $$$PARAM$-&gt;id]);&#10;            if (!$$$PARAM$) {&#10;                throw new $Exception$Exception(&quot;No $PARAM$ exists with the ID: “{$$$PARAM$-&gt;id}“.&quot;);&#10;            }&#10;        } else {&#10;            $$$PARAM$Record = new $RECORDCLASS$();&#10;        }&#10;        &#10;        // some code ... $END$&#10;        &#10;        $$$PARAM$Record-&gt;save(false);&#10;        &#10;        if ($$isNew$MODEL$) {&#10;            $$$PARAM$-&gt;id = $$$PARAM$Record-&gt;id;&#10;        }&#10;    &#10;        $transaction-&gt;commit();&#10;    } catch(\Throwable $exception) {&#10;        $transaction-&gt;rollBack();&#10;        &#10;        throw $exception;&#10;    }&#10;    &#10;    $this-&gt;_$PROP$ById[$$$PARAM$-&gt;id] = $$$PARAM$;&#10;    $this-&gt;_$PROP2$ByHandle[$$$PARAM$-&gt;handle] = $$$PARAM$;&#10;    &#10;    return true;&#10;}" description="Craft / Service / Domain / Save" toReformat="true" toShortenFQNames="true">
+    <variable name="PARAM" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="capitalize(PARAM)" defaultValue="" alwaysStopAt="false" />
+    <variable name="RECORDCLASS" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="Exception" expression="capitalize(PARAM)" defaultValue="" alwaysStopAt="false" />
+    <variable name="PROP" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROP2" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="cqcm" value="public function $METHOD$($value)&#10;{&#10;    $this-&gt;$PROP$ = $value;&#10;    &#10;    return $this;&#10;}&#10;&#10;$END$" description="Craft / Query / Condition" toReformat="false" toShortenFQNames="true">
+    <variable name="PROP" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="METHOD" expression="camelCase(PROP)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="csdp" value="/**&#10; * @var bool&#10; */&#10;public $$_fetchedAll$MODELS$s = false;&#10;&#10;/**&#10; * @var $MODEL$[]|null&#10; */&#10;public $$_$PROP$sById;&#10;&#10;/**&#10; * @var $MODEL$[]|null&#10; */&#10;public $$_$PROP$sByHandle;&#10;&#10;$END$" description="Craft / Service / Domain / Properties" toReformat="true" toShortenFQNames="true">
+    <variable name="MODEL" expression="classNameComplete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODELS" expression="MODEL" defaultValue="" alwaysStopAt="false" />
+    <variable name="PROP" expression="camelCase(MODELS)" defaultValue="" alwaysStopAt="false" />
+    <context>
+      <option name="PHP Class Member" value="true" />
+    </context>
+  </template>
+  <template name="cspg" value="// Constants&#10;// =========================================================================&#10;&#10;/**&#10; * @event $EVENT$ The event that is triggered before a tag group is saved.&#10; */&#10;const EVENT_BEFORE_SAVE_GROUP = 'beforeSaveGroup';&#10;&#10;/**&#10; * @event $EVENT$ The event that is triggered after a tag group is saved.&#10; */&#10;const EVENT_AFTER_SAVE_GROUP = 'afterSaveGroup';&#10;&#10;/**&#10; * @event $EVENT$ The event that is triggered before a tag group is deleted.&#10; */&#10;const EVENT_BEFORE_DELETE_GROUP = 'beforeDeleteGroup';&#10;&#10;/**&#10; * @event $EVENT$ The event that is triggered after a tag group is deleted.&#10; */&#10;const EVENT_AFTER_DELETE_GROUP = 'afterDeleteGroup';&#10;&#10;// Properties&#10;// =========================================================================&#10;    &#10;/**&#10; * @var bool&#10; */&#10;public $$_fetchedAllGroups = false;&#10;&#10;/**&#10; * @var $MODEL$[]|null&#10; */&#10;public $$_groupsById;&#10;&#10;/**&#10; * @var $MODEL$[]|null&#10; */&#10;public $$_groupsByHandle;&#10;&#10;$END$" description="Craft / Service / Group / Consts &amp; Properties" toReformat="true" toShortenFQNames="true">
+    <variable name="EVENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="classNameComplete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP Class Member" value="true" />
+    </context>
+  </template>
+  <template name="csmg" value="/**&#10; * Returns all category groups.&#10; *&#10; * @return $CLASS$[]&#10; */&#10;public function getAllGroups(): array&#10;{&#10;    if ($this-&gt;_fetchedAllGroups) {&#10;        return array_values($this-&gt;_groupsById);&#10;    }&#10;&#10;    $this-&gt;_groupsById = [];&#10;&#10;    /** @var $CLASS$[] $groupRecords */&#10;    $groupRecords = $this-&gt;_createGroup()&#10;&#10;    foreach ($groupRecords as $groupRecord) {&#10;        $this-&gt;_groupsById[$groupRecord-&gt;id] = $this-&gt;_createCategoryGroupFromRecord($groupRecord);&#10;    }&#10;&#10;    $this-&gt;_fetchedAllGroups = true;&#10;&#10;    return array_values($this-&gt;_groupsById);&#10;}&#10;&#10;public function getGroupById(int $groupId)&#10;{&#10;    &#10;}&#10;&#10;public function getGroupByName(string $name)&#10;{&#10;&#10;&#10;}" description="Craft / Service / Group / Methods" toReformat="false" toShortenFQNames="true">
+    <variable name="CLASS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP Class Member" value="true" />
+    </context>
+  </template>
+  <template name="csmt" value="/**&#10; * @event RegisterComponentTypesEvent&#10; */&#10;const EVENT_REGISTER_ALL_$MODEL_CONST$_TYPES = 'registerAll$MODEL$Types';&#10;&#10;/**&#10; * @return string[]&#10; */&#10;public function getAll$MODEL$Types(): array&#10;{&#10;    $types = [&#10;    &#10;    ];&#10;    &#10;    $event = new RegisterComponentTypesEvent([&#10;        'types' =&gt; $types&#10;    ]);&#10;    &#10;    $this-&gt;trigger(static::EVENT_REGISTER_ALL_$MODEL_CONST$_TYPES, $event);&#10;&#10;    return $event-&gt;types;&#10;}" description="Craft / Service / Types" toReformat="false" toShortenFQNames="true">
+    <variable name="MODEL" expression="classNameComplete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL_CONST" expression="capitalizeAndUnderscore(MODEL)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP Class Member" value="true" />
+    </context>
+  </template>
+  <template name="csde" value="/**&#10; * @event $MODLE$Event&#10; */&#10;const EVENT_BEFORE_SAVE_$MODLE_CONST$ = 'beforeSave$MODLE$';&#10;&#10;/**&#10; * @event $MODLE$Event&#10; */&#10;const EVENT_AFTER_SAVE_$MODLE_CONST$ = 'afterSave$MODLE$';&#10;&#10;/**&#10; * @event $MODLE$Event&#10; */&#10;const EVENT_BEFORE_DELETE_$MODLE_CONST$ = 'beforeDelete$MODLE$';&#10;&#10;/**&#10; * @event $MODLE$Event&#10; */&#10;const EVENT_AFTER_DELETE_$MODLE_CONST$ = 'afterDelete$MODLE$';&#10;&#10;$END$" description="Craft / Service / Domain / Events" toReformat="true" toShortenFQNames="true">
+    <variable name="MODLE" expression="classNameComplete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODLE_CONST" expression="capitalizeAndUnderscore(MODEL)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+  <template name="csdgh" value="public function get$MODEL$ByHandle(string $handle)&#10;{&#10;    if ($this-&gt;_$PROP$ByHandle &amp;&amp; array_key_exists($handle, $this-&gt;_$PROP$)) {&#10;        return $this-&gt;_$PROP$[$handle];&#10;    }&#10;    &#10;    if ($this-&gt;_fetchedAll$PROP2$) {&#10;        return null;&#10;    }&#10;    &#10;    $result = $this-&gt;_create$METHOD$&#10;        -&gt;where(['handle' =&gt; $handle])&#10;        -&gt;one();&#10;    &#10;    return $this-&gt;_$PROP$[$handle] = $result ? $this-&gt;create$METHOD2$($result): null;&#10;}" description="Craft / Service / Domain / GetByHandle" toReformat="false" toShortenFQNames="true">
+    <variable name="PROP" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="MODEL" expression="capitalize(PROP)" defaultValue="" alwaysStopAt="true" />
+    <variable name="PROP2" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="METHOD" expression="complete()" defaultValue="&quot;Query&quot;" alwaysStopAt="true" />
+    <variable name="METHOD2" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+</templateSet>
