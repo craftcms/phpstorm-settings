@@ -1,6 +1,6 @@
 <code_scheme name="Craft" version="173">
   <option name="LINE_SEPARATOR" value="&#xA;" />
-  <option name="SOFT_MARGINS" value="120" />
+  <option name="SOFT_MARGINS" value="80,120" />
   <JSCodeStyleSettings version="0">
     <option name="SPACE_BEFORE_FUNCTION_LEFT_PARENTH" value="false" />
     <option name="USE_DOUBLE_QUOTES" value="false" />
