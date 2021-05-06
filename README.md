@@ -4,7 +4,7 @@ PhpStorm Settings for Craft CMS
 ## Installation
 
  1. Go to PhpStorm Preferences → Tools → Settings Repository
- 2. Add Read-only Source `https://github.com/craftcms/phpstorm-settings`
+ 2. Add Read-only Source `https://github.com/BenParizek/phpstorm-settings`
  3. Restart PhpStorm
 
 ## Configuration
