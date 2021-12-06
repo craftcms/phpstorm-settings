@@ -5,6 +5,7 @@ PhpStorm Settings for Craft CMS
 
 - [`Craft_Code_Style.xml`](Craft_Code_Style.xml) – Code style scheme. Install from Preferences → Editor → Code Style → Manage… → Import…
 - [`Craft_Inspections.xml`](Craft_Inspections.xml) – Inspection profile. Install from Preferences → Editor → Inspections → Manage → Import…
+- [`Craft_Live_Templates.xml`](Craft_Live_Templates.xml) - Live templates. Install from your PhpStorm config path `jba_config/templates` e.g. `~/Library/Preferences/PhpStorm<version>/jba_config/templates`(MacOS/PhpStorm2018.2).
 
 ## Recommended PhpStorm Plugins
 
