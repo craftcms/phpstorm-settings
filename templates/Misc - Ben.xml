@@ -1,0 +1,7 @@
+<templateSet group="Misc - Ben">
+  <template name="die" value="die('Shazam!');" description="die('Shazam!');" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="PHP" value="true" />
+    </context>
+  </template>
+</templateSet>
