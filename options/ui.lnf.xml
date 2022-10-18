@@ -1,0 +1,15 @@
+<application>
+  <component name="DependencyUISettings">
+    <option name="UI_SHOW_FILES" value="false" />
+  </component>
+  <component name="UISettings">
+    <option name="COLOR_BLINDNESS" value="deuteranopia" />
+    <option name="FULL_PATHS_IN_TITLE_BAR" value="true" />
+    <option name="HIDE_TOOL_STRIPES" value="true" />
+    <option name="OVERRIDE_NONIDEA_LAF_FONTS" value="true" />
+    <option name="SHOW_EDITOR_TOOLTIP" value="false" />
+    <option name="SHOW_FILE_ICONS_IN_TABS" value="false" />
+    <option name="SHOW_ICONS_IN_MENUS" value="false" />
+    <option name="SHOW_NAVIGATION_BAR" value="false" />
+  </component>
+</application>
