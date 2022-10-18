@@ -1,0 +1,24 @@
+<keymap version="1" name="Ben Personal" parent="Mac OS X 10.5+">
+  <action id="EditorToggleColumnMode">
+    <keyboard-shortcut first-keystroke="alt c" />
+  </action>
+  <action id="ExpandAllToLevel1">
+    <keyboard-shortcut first-keystroke="meta alt multiply" second-keystroke="1" />
+    <keyboard-shortcut first-keystroke="meta alt multiply" second-keystroke="numpad1" />
+    <keyboard-shortcut first-keystroke="shift meta alt equals" second-keystroke="1" />
+  </action>
+  <action id="ExpandAllToLevel2">
+    <keyboard-shortcut first-keystroke="meta alt multiply" second-keystroke="2" />
+    <keyboard-shortcut first-keystroke="meta alt multiply" second-keystroke="numpad2" />
+    <keyboard-shortcut first-keystroke="shift meta alt equals" second-keystroke="2" />
+  </action>
+  <action id="GotoTest" />
+  <action id="Images.ShowThumbnails" />
+  <action id="InspectCode">
+    <keyboard-shortcut first-keystroke="shift meta i" />
+  </action>
+  <action id="ReopenClosedTab">
+    <keyboard-shortcut first-keystroke="shift meta t" />
+  </action>
+  <action id="RunDashboard.ShowConfigurations" />
+</keymap>
